@@ -1,0 +1,6 @@
+{
+  "name": "pigallery2-trash-extension",
+  "version": "1.0.0",
+  "description": "PiGallery2 extension that adds a move-to-trash button (non-destructive delete).",
+  "license": "MIT"
+}
