@@ -1,24 +1,26 @@
-# PiGallery2 Trash Extension
+# pigallery-trash-extension
+**PiGallery2 Trash Extension**
 
-Author: RedialC  |  [中文说明 / Chinese README](README_cn.md)
+* Author: RedialC, pepa65
+* Features:
+  - Move photo/video to Trash directory after clicking on the Move-to-trash-icon.
+  - Database entry gets removed immediately. The thumbnail will disappear after the next refresh/reload.
+  - On name collisions in the Trash directory, a `__trash#` suffix gets added to the filename.
+  - For moves across device boundaries the fallback is copy & delete.
+* Config: the Trash directory can be set in the `PG2_TRASH_DIR` variable (default: `/app/data/trash`).
+  Map this directory as a persistent volume to access the trashed files on the host system.
+* This extension is using the paths of the docker images.
 
-Features
-- Move photo/video to a trash folder instead of deleting it; DB entry is removed so the item disappears immediately.
-- Auto-add `__trashX` suffix on name collisions; works across devices (fallback to copy+delete).
-
-Note
-- UI may not change instantly after click; the item is already moved to trash and will disappear after the next refresh/reload.
-
-Preview
-![Move to trash button](PriviewTrash.jpg)
-
-Config
-- `PG2_TRASH_DIR` (default `/app/data/tmp/trash`): target trash folder. Mount it as a persistent volume.
-
-Install & Use (Docker example)
-1) Copy `pigallery2-trash-extension` into your PiGallery2 extensions dir, e.g. `/app/data/config/extension/pigallery2-trash-extension`.
-2) Ensure the trash folder exists and is writable; e.g. `-e PG2_TRASH_DIR=/app/data/tmp/trash -v /your/trash:/app/data/tmp/trash`.
-3) Restart PiGallery2. After login (role >= User) a “move to trash” button appears on the media card.
-
-Troubleshooting
-- Move fails: verify `PG2_TRASH_DIR` exists and is writable/mounted; check server logs for the exact error.
+## Install & Use (Docker example)
+1) Copy the `pigallery2-trash-extension` directory into your PiGallery2 extensions directory
+   (default: `/app/data/config/extensions`).
+  - The `LICENSE` and `.git` directory can be removed.
+2) Ensure the Trash directory exists and is writable.
+  - Define the environmental variable (docker: `-e PG2_TRASH_DIR=/app/data/trash`).
+  - Map the Trash directory (docker: `-v /host/trash:/app/data/trash`).
+3) Restart PiGallery2. After login (role User/Admin/Developer) a Move-to-Trash icon appears on the photo/video in Gallery mode.
+### Common problems
+* Move fails:
+ - Verify if the Trash directory exists and is writable.
+ - Verify that the `images` directory is writable (docker: `-v /host/images:/app/data/images:rw`).
+ - Check the server logs for the exact error.
