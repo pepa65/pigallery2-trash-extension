@@ -1,7 +1,7 @@
 # pigallery-trash-extension
 **PiGallery2 Trash Extension**
 
-* Author: RedialC, pepa65
+* Extension for PiGallery2: https://github.com/bpatrik/pigallery2
 * Features:
   - Move photo/video to Trash directory after clicking on the Move-to-trash-icon.
   - Database entry gets removed immediately. The thumbnail will disappear after the next refresh/reload.
@@ -10,6 +10,9 @@
 * Config: the Trash directory can be set in the `PG2_TRASH_DIR` variable (default: `/app/data/trash`).
   Map this directory as a persistent volume to access the trashed files on the host system.
 * This extension is using the paths of the docker images.
+* Author: RedialC, pepa65
+* Repo: https://github.com/pepa65/pigallery2-trash-extension
+* After: https://github.com/JDui/pigallery2-trash-extension
 
 ## Install & Use (Docker example)
 1) Copy the `pigallery2-trash-extension` directory into your PiGallery2 extensions directory
